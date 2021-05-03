@@ -7,6 +7,7 @@ export interface AxiosRequestConfig {
   data?: any // post参数， 放body中
   headers?: any
   responseType?: XMLHttpRequestResponseType
+  timeout?: number
 }
 
 export interface AxiosResponse {
