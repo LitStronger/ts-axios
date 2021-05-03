@@ -23,3 +23,24 @@ export function processHeaders(headers: any, data: any): any {
   }
   return headers
 }
+
+export function parseHeaders(headers: string): any {
+  let parsed = Object.create(null)
+  if (!headers) {
+    return parsed
+  }
+
+  headers.split('\r\n').forEach(line => {
+    let [key, val] = line.split(':')
+    key = key.trim().toLowerCase() // trim 去除字符串两端空格
+    if (!key) {
+      return
+    }
+    if (val) {
+      val = val.trim()
+    }
+
+    parsed[key] = val
+  })
+  return parsed
+}
